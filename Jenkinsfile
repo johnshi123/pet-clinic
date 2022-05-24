@@ -82,7 +82,7 @@ pipeline {
 	//			[$class: 'RequesterRecipientProvider']],
         //		subject: currentBuild.currentResult + " : " + env.JOB_NAME +"  (Build Number: "+env.BUILD_NUMBER+")"
         //		
-	/		    properties([[$class: 'GithubProjectProperty',
+	//		    properties([[$class: 'GithubProjectProperty',
           //      projectUrlStr: 'https://github.com/usmanaslam75/cryptowebapp']])
 //
     //    		step([$class: 'GitHubIssueNotifier',
@@ -110,4 +110,3 @@ pipeline {
        // }  
      //}  
 }
-
