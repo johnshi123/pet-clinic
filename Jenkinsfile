@@ -2,7 +2,7 @@ pipeline {
     agent any   
     environment {
         dockerImage=''
-        registry='johnshi123/petclinic'
+        registry='johnshi123/petclinic-production'
         registryCredential='DockerHub'
 
     }
@@ -33,23 +33,23 @@ pipeline {
             }
         }
         
-        //stage('Docker Image') {
-          //  steps {
-            //    script{
-              //      dockerImage=docker.build registry
-                //}
-            //}
-       // }
-        //stage('Upload Docker Image') {
-          //  steps { 
-            //    script{
-              //     // docker.withRegistry(registryCredential)
-               //     withDockerRegistry(credentialsId: 'DockerHub'){
-                 //       dockerImage.push()
-                   // }
-               /// }
-            //}
-       /// } 
+        stage('Docker Image') {
+            steps {
+                script{
+                    dockerImage=docker.build registry
+                }
+            }
+        }
+        stage('Upload Docker Image') {
+            steps { 
+                script{
+                    docker.withRegistry(registryCredential)
+                    withDockerRegistry(credentialsId: 'DockerHub'){
+                        dockerImage.push()
+                    }
+                }
+            }
+        } 
         
         
         //TODO fix this step
