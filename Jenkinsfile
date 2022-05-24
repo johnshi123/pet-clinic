@@ -57,7 +57,7 @@ pipeline {
        stage('Deploy container'){
             steps{
                script{
-                     sshagent (credentials: ['AWS_docker']) {
+                     sshagent (credentials: ['SSH']) {
 					    sh 'ssh -o StrictHostKeyChecking=no -l ubuntu stage-server sudo docker rm -f pet-clinic'
 					    sh 'ssh -o StrictHostKeyChecking=no -l ubuntu stage-server sudo docker pull ohnshi123/petclinic-production'
 					    sh 'ssh -o StrictHostKeyChecking=no -l ubuntu stage-server sudo docker run -d --name pet-clinic -p 8088:8080 johnshi123/petclinic-production'
@@ -82,7 +82,7 @@ pipeline {
 	//			[$class: 'RequesterRecipientProvider']],
         //		subject: currentBuild.currentResult + " : " + env.JOB_NAME +"  (Build Number: "+env.BUILD_NUMBER+")"
         //		
-	//		    properties([[$class: 'GithubProjectProperty',
+	/		    properties([[$class: 'GithubProjectProperty',
           //      projectUrlStr: 'https://github.com/usmanaslam75/cryptowebapp']])
 //
     //    		step([$class: 'GitHubIssueNotifier',
