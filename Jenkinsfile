@@ -59,7 +59,7 @@ pipeline {
                script{
                      sshagent (credentials: ['SSH']) {
 					    sh 'ssh -o StrictHostKeyChecking=no -l ubuntu stage-server sudo docker rm -f pet-clinic'
-					    sh 'ssh -o StrictHostKeyChecking=no -l ubuntu stage-server sudo docker pull ohnshi123/petclinic-production'
+					    sh 'ssh -o StrictHostKeyChecking=no -l ubuntu stage-server sudo docker pull johnshi123/petclinic-production'
 					    sh 'ssh -o StrictHostKeyChecking=no -l ubuntu stage-server sudo docker run -d --name pet-clinic -p 8088:8080 johnshi123/petclinic-production'
   					 }
                }
