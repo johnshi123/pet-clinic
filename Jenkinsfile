@@ -59,9 +59,9 @@ pipeline {
                script{
                      sshagent (credentials: ['AWS_docker']) {
 					    //sh 'ssh -o StrictHostKeyChecking=no -l ec2-user stage-server sudo docker stop cryptowebapp'
-					    sh 'ssh -o StrictHostKeyChecking=no -l ec2-user stage-server sudo docker rm -f cryptowebapp'
-					    sh 'ssh -o StrictHostKeyChecking=no -l ec2-user stage-server sudo docker pull usmanaslam/cryptowebapp'
-					    sh 'ssh -o StrictHostKeyChecking=no -l ec2-user stage-server sudo docker run -d --name cryptowebapp -p 8081:8080 usmanaslam/cryptowebapp'
+					    sh 'ssh -o StrictHostKeyChecking=no -l ubuntu stage-server sudo docker rm -f cryptowebapp'
+					    sh 'ssh -o StrictHostKeyChecking=no -l ubuntu stage-server sudo docker pull usmanaslam/cryptowebapp'
+					    sh 'ssh -o StrictHostKeyChecking=no -l ubuntu stage-server sudo docker run -d --name cryptowebapp -p 8081:8080 usmanaslam/cryptowebapp'
   					 }
                }
             }
